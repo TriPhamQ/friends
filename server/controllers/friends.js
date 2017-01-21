@@ -10,6 +10,7 @@ function FriendsController(){
 			res.json(results);
 		});
 	};
+
 	this.create = function(req, res){
 		Friend.create(req.body, function (err, results) {
 			if (err) {
@@ -21,6 +22,7 @@ function FriendsController(){
 			};
 		});
 	};
+
 	this.update = function(req, res){
 		Friend.findOne({_id: req.params.id}, function (err, friend) {
 			if (err) {
@@ -41,6 +43,7 @@ function FriendsController(){
 			};
 		});
 	};
+
 	this.delete = function(req, res){
 		Friend.remove({_id: req.params.id}, function (err) {
 			if (err) {
@@ -51,6 +54,7 @@ function FriendsController(){
 			};
 		});
 	};
+	
 	this.show = function(req, res){
 		Friend.findOne({_id: req.params.id}, function (err, friend) {
 			if (err) {
