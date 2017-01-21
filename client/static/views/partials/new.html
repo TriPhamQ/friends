@@ -1,9 +1,9 @@
-<form class="" action="/friends" method="post" ng-submit="addFriend()">
+<form class="" action="/friends" method="post">
 	<div class="">
 		<input type="text" name="first_name" value="" ng-model="newFriend.first_name">First Name
 	</div>
 	<div class="">
 		<input type="text" name="last_name" value="" ng-model="newFriend.last_name">Last Name
 	</div>
-	<button type="button" name="button">Submit</button>
+	<button type="button" name="button" ng-click="create()">Submit</button>
 </form>
