@@ -1,10 +1,16 @@
-myApp.controller('newController', ['$scope', function($scope) {
+myApp.controller('newController', ['$scope', 'friendsFactory', function($scope, friendsFactory) {
     //when your index.html page loads, you should see this line. Otherwise
     //make sure your controller syntax is correct
     //and that you have included the controller script file
     console.log('newController loaded');
     var self = this;
-
+    var index = function () {
+        friendsFactory.index(function(returnedData){
+            $scope.friends = returnedData;
+            console.log($scope.friends);
+        });
+    };
+    index();
     // This line is optional, because angular will be smart enough
     // to know you have a NC.newFriend object from your ng-model.
     $scope.newFriend = {};
@@ -21,9 +27,10 @@ myApp.controller('newController', ['$scope', function($scope) {
             console.log('required fields not present');
             return;
         }
-
         console.log('All required fields present, and the $scope.newFriend on the controller (which is also NC.newFriend on the partial) looks like this:');
         console.log($scope.newFriend);
-        console.log("I haven't sent this information to the server yet.");
+        friendsFactory.create($scope.newFriend, function (returnedData) {
+            index();
+        });
     };
 }]); //end the controller function invocation: ()

@@ -1,6 +1,6 @@
 console.log('friends controller');
 
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 var Friend = mongoose.model('Friend');
 
 function FriendsController(){
@@ -12,6 +12,7 @@ function FriendsController(){
 	};
 
 	this.create = function(req, res){
+		console.log("Information of new friend passed in:", req.body);
 		Friend.create(req.body, function (err, results) {
 			if (err) {
 				console.log(err);
@@ -54,7 +55,7 @@ function FriendsController(){
 			};
 		});
 	};
-	
+
 	this.show = function(req, res){
 		Friend.findOne({_id: req.params.id}, function (err, friend) {
 			if (err) {
