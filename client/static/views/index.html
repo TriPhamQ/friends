@@ -3,21 +3,30 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Awsome Friends</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
 		<script src="routes.js" charset="utf-8"></script>
 		<script src="assets/app.js" charset="utf-8"></script>
-		<script src="assets/controllers/indexController.js" charset="utf-8"></script>
 		<script src="assets/controllers/newController.js" charset="utf-8"></script>
 		<script src="assets/controllers/showController.js" charset="utf-8"></script>
 		<script src="assets/controllers/editController.js" charset="utf-8"></script>
 		<script src="assets/factories/friendsFactory.js" charset="utf-8"></script>
 	</head>
 	<body>
-		<h1>Hellow World!</h1>
-		<a href="#/new">New Friend</a>
-		<div class="" ng-view>
+		<div class="container">
+			<h1>Hello World!</h1>
+			<div class="" ng-view>
 
+			</div>
 		</div>
+		<script>
+		$('.datepicker').pickadate({
+			selectMonths: true, // Creates a dropdown to control month
+		    selectYears: 15 // Creates a dropdown of 15 years to control year
+		});
+  		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 	</body>
 </html>

@@ -1,9 +1,35 @@
-<form class="" action="/friends" method="post">
-	<div class="">
-		<input type="text" name="first_name" value="" ng-model="newFriend.first_name">First Name
-	</div>
-	<div class="">
-		<input type="text" name="last_name" value="" ng-model="newFriend.last_name">Last Name
-	</div>
-	<button type="button" name="button" ng-click="create()">Submit</button>
-</form>
+<div class="row">
+	<form class="col s12" action="/friends" method="post">
+		<div class="input-field col s6">
+			<input type="text" name="first_name" value="" placeholder="First Name" ng-model="newFriend.first_name">
+		</div>
+		<div class="input-field col s6">
+			<input type="text" name="last_name" value="" placeholder="Last Name" ng-model="newFriend.last_name">
+		</div>
+
+		<div class="col s12">
+			<input type="date" class="datepicker" ng-model="newFriend.birth_date">
+		</div>
+		<button class="btn waves-effect waves-light" type="button" name="button" ng-click="create()">Submit</button>
+	</form>
+</div>
+<div class="row">
+	<table class="bordered striped highlight" ng-if="friends.length > 0">
+		<thead>
+			<th>Friend List</th>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Name</th>
+				<th>Birthdate</th>
+			</tr>
+			<tr ng-repeat="friend in friends">
+				<td ng-bind-template="{{friend.first_name}} {{friend.last_name}}"></td>
+				<td ng-bind="friend.birth_date | date:'MM/dd/yyyy'"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="row">
+	<a class="waves-effect waves-light btn" href="#/">Show Friends List</a>
+</div>

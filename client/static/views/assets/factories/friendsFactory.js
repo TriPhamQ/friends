@@ -6,6 +6,7 @@ myApp.factory('friendsFactory', ['$http', function ($http) {
 
     function FriendsFactory() {
         var _this = this;
+
         this.create = function (newfriend, callback) {
 			console.log("New friend passed in factory is:", newfriend);
             $http.post('/friends', newfriend).then(function (returned_data) {
@@ -15,29 +16,41 @@ myApp.factory('friendsFactory', ['$http', function ($http) {
                 }
             });
         };
-        this.update = function () { // what parameters do we need?
-            // Your code here
+
+        this.update = function (editedFriend, id) {
+            $http.put('/friends/'+id, editedFriend).then(function () {
+
+            })
         };
+
         this.index = function (callback) {
-            //call this method if you want to update or set the friends variable
             $http.get('/friends').then(function (returned_data) {
-                // console.log(returned_data.data);
                 friends = returned_data.data;
                 callback(friends);
             });
-            //Note: this can be shortened to $http.get('/friends').then(callback);
-            //But only if you only want to run the callback from the controller.
         };
-        this.delete = function () { // what parameters do we need?
-            // Your code here
+
+        this.delete = function (id) {
+            $http.delete('/friends/'+id).then(function () {
+
+            })
         };
-        this.show = function () { // what parameters do we need?
-            // Your code here
+
+        this.show = function (id, callback) {
+            console.log("Below is Params");
+            console.log(id);
+            // console.log(id.friendid);
+            $http.get('/friends/'+id).then(function (returned_data) {
+                friend = returned_data.data;
+                console.log("FRIEND SELECTED",friend);
+                callback(friend);
+            });
         };
-        // Sometimes you might not want to make a DB call, and just get the information stored in the factory.
+
         this.getFriends = function (callback) {
             callback(friends);
         };
+
         this.getFriend = function (callback) {
             callback(friend);
         };

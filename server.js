@@ -6,7 +6,7 @@ var port = 9000;
 
 var app = express ();
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "./client/static/views")));
 app.use(express.static(path.join(__dirname, "./server/config")));
 // app.set('views', path.join(__dirname, './client/static/views'));

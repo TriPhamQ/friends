@@ -1,7 +1,22 @@
-// To hit this controller and partial, try going to 'http://localhost:8000/#/edit/imatest'
-// to see $routeParams update with a new _id property
-myApp.controller('editController', ['$scope', '$routeParams', function($scope, $routeParams) { //if injected above dont forget to add in as an argument
+myApp.controller('editController', ['$scope', '$routeParams', 'friendsFactory', function($scope, $routeParams, friendsFactory) { //if injected above dont forget to add in as an argument
     $scope.friendid = $routeParams.friendid;
+
     console.log('editController loaded');
-    console.log("$routeParams currently looks like this:", $routeParams);
-}]); //end the controller function invocation: ()
+    console.log("$routeParams currently looks like this:", $routeParams.friendid);
+
+    friendsFactory.show($routeParams.friendid, function (data) {
+		$scope.friend = data;
+		console.log("Friend: ", $scope.friend);
+	});
+
+    $scope.edit = function () {
+        console.log("Starts the update....");
+        console.log($scope.editedFriend);
+        friendsFactory.update($scope.editedFriend, $routeParams.friendid);
+        friendsFactory.show($routeParams.friendid, function (data) {
+    		$scope.friend = data;
+    		console.log("Friend: ", $scope.friend);
+    	});
+        $scope.editedFriend = {};
+    }
+}]);

@@ -25,13 +25,24 @@ function FriendsController(){
 	};
 
 	this.update = function(req, res){
+		console.log(req.body);
 		Friend.findOne({_id: req.params.id}, function (err, friend) {
 			if (err) {
 				console.log(err);
 			}
 			else {
-				friend.first_name = req.body.first_name;
-				friend.last_name = req.body.last_name;
+				if (req.body.first_name) {
+					friend.first_name = req.body.first_name;
+				};
+				if (req.body.last_name) {
+					friend.last_name = req.body.last_name;
+				};
+				if (req.body.birth_date) {
+					friend.birth_date = req.body.birth_date;
+				};
+				// friend.first_name = req.body.first_name;
+				// friend.last_name = req.body.last_name;
+				// friend.birth_date = req.body.birth_date;
 				friend.save(function (err, updatedFriend) {
 					if (err) {
 						console.log("Update friend gave this error:",err);
@@ -57,6 +68,7 @@ function FriendsController(){
 	};
 
 	this.show = function(req, res){
+		console.log("show started");
 		Friend.findOne({_id: req.params.id}, function (err, friend) {
 			if (err) {
 				console.log("Error finding friend:", err);

@@ -1,0 +1,20 @@
+<div class="row">
+	<table class="bordered striped highlight">
+		<thead>
+			<th>Friend List</th>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Name</th>
+				<th>Birthdate</th>
+			</tr>
+			<tr>
+				<td ng-bind-template="{{friend.first_name}} {{friend.last_name}}"></td>
+				<td ng-bind="friend.birth_date | date:'MM/dd/yyyy'"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="row">
+	<a class="waves-effect waves-light btn" href="#/">Show Friends List</a>
+</div>
