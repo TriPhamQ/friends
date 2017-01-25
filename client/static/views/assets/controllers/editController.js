@@ -1,6 +1,6 @@
-myApp.controller('editController', ['$scope', '$routeParams', 'friendsFactory', function($scope, $routeParams, friendsFactory) { //if injected above dont forget to add in as an argument
+myApp.controller('editController', ['$scope', '$routeParams', 'friendsFactory', function ($scope, $routeParams, friendsFactory) { //if injected above dont forget to add in as an argument
     $scope.friendid = $routeParams.friendid;
-
+    $scope.userid = $routeParams.userid;
     console.log('editController loaded');
     console.log("$routeParams currently looks like this:", $routeParams.friendid);
 

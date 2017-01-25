@@ -7,6 +7,8 @@ var mongoose = require('mongoose'),
 	reg = new RegExp(".js$", "i"),
 	dbURI = 'mongodb://localhost/friends_db';
 
+mongoose.Promise = global.Promise;
+
 mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', function () {

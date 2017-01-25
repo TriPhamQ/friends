@@ -1,22 +1,30 @@
-myApp.controller('showController', ['$scope', 'friendsFactory', '$routeParams', function($scope, friendsFactory, $routeParams) {
+myApp.controller('showController', ['$scope', 'friendsFactory', '$routeParams', '$location', function ($scope, friendsFactory, $routeParams, $location) {
     console.log('showController loaded');
+    console.log($routeParams.userid);
+    $scope.userid = $routeParams.userid;
     var self = this;
     var index = function () {
-        friendsFactory.index(function(returnedData){
+        friendsFactory.index($routeParams.userid, function(returnedData){
             $scope.friends = returnedData;
         });
     };
 
 	index();
+    if ($routeParams.friendid) {
+        friendsFactory.show($routeParams.friendid, function (data) {
+    		$scope.friend = data;
+    		console.log("Friend: ", $scope.friend);
+    	});
+        
+        $scope.delete = function (friendid) {
+            friendsFactory.delete(friendid);
+            index();
+        };
+    };
 
-	friendsFactory.show($routeParams.friendid, function (data) {
-		$scope.friend = data;
-		console.log("Friend: ", $scope.friend);
-	});
-	console.log("End looking for Friend Info");
-
-    $scope.delete = function (friendid) {
-        friendsFactory.delete(friendid);
-        index();
+    $scope.logout = function () {
+        $scope.userid = undefined;
+        $scope.friendid = undefined;
+        $location.url('/');
     }
 }]);

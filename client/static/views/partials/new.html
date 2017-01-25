@@ -6,7 +6,6 @@
 		<div class="input-field col s6">
 			<input type="text" name="last_name" value="" placeholder="Last Name" ng-model="newFriend.last_name">
 		</div>
-
 		<div class="col s12">
 			<input type="date" class="datepicker" ng-model="newFriend.birth_date">
 		</div>
@@ -31,5 +30,5 @@
 	</table>
 </div>
 <div class="row">
-	<a class="waves-effect waves-light btn" href="#/">Show Friends List</a>
+	<a class="waves-effect waves-light btn" href="#/{{userid}}/dashboard">Show Friends List</a>
 </div>

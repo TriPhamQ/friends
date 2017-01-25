@@ -23,8 +23,8 @@ myApp.factory('friendsFactory', ['$http', function ($http) {
             })
         };
 
-        this.index = function (callback) {
-            $http.get('/friends').then(function (returned_data) {
+        this.index = function (userid, callback) {
+            $http.get('/friends/'+userid).then(function (returned_data) {
                 friends = returned_data.data;
                 callback(friends);
             });
@@ -40,7 +40,7 @@ myApp.factory('friendsFactory', ['$http', function ($http) {
             console.log("Below is Params");
             console.log(id);
             // console.log(id.friendid);
-            $http.get('/friends/'+id).then(function (returned_data) {
+            $http.get('/friends/show/'+id).then(function (returned_data) {
                 friend = returned_data.data;
                 console.log("FRIEND SELECTED",friend);
                 callback(friend);

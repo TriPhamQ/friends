@@ -1,9 +1,9 @@
-myApp.controller('newController', ['$scope', 'friendsFactory', function($scope, friendsFactory) {
+myApp.controller('newController', ['$scope', 'friendsFactory', '$routeParams', function ($scope, friendsFactory, $routeParams) {
     console.log('newController loaded');
     var self = this;
-
+    $scope.userid = $routeParams.userid;
     var index = function () {
-        friendsFactory.index(function(returnedData){
+        friendsFactory.index($routeParams.userid,function(returnedData){
             $scope.friends = returnedData;
             console.log($scope.friends);
         });
@@ -22,6 +22,7 @@ myApp.controller('newController', ['$scope', 'friendsFactory', function($scope, 
         }
         console.log('All required fields present, and the $scope.newFriend on the controller (which is also NC.newFriend on the partial) looks like this:');
         console.log($scope.newFriend);
+        $scope.newFriend._user = $routeParams.userid;
         friendsFactory.create($scope.newFriend, function (returnedData) {
             index();
             $scope.newFriend = {};

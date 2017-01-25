@@ -3,18 +3,22 @@ var myApp = angular.module('app', ['ngRoute']);
 myApp.config(function ($routeProvider) {
 	$routeProvider
 	.when('/', {
-		templateUrl: 'partials/index.html',
+		templateUrl: 'partials/logreg.html',
+		controller: 'logregController'
+	})
+	.when('/:userid/dashboard', {
+		templateUrl: 'partials/dashboard.html',
 		controller: 'showController'
 	})
-	.when('/new', {
+	.when('/:userid/new', {
 		templateUrl: 'partials/new.html',
 		controller: 'newController'
 	})
-	.when('/show/:friendid', {
+	.when('/:userid/show/:friendid', {
 		templateUrl: 'partials/show.html',
 		controller: 'showController'
 	})
-	.when('/edit/:friendid', {
+	.when('/:userid/edit/:friendid', {
 		templateUrl: 'partials/edit.html',
 		controller: 'editController'
 	})

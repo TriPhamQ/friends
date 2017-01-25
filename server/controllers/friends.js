@@ -5,7 +5,8 @@ var Friend = mongoose.model('Friend');
 
 function FriendsController(){
 	this.index = function(req, res){
-		Friend.find({}, function (err, results) {
+		console.log("IDDDDD", req.params.userid);
+		Friend.find({_user: req.params.userid}, function (err, results) {
 			console.log("Got back Friend DB");
 			res.json(results);
 		});
