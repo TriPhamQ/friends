@@ -15,11 +15,11 @@ myApp.controller('showController', ['$scope', 'friendsFactory', '$routeParams', 
     		$scope.friend = data;
     		console.log("Friend: ", $scope.friend);
     	});
-        
-        $scope.delete = function (friendid) {
-            friendsFactory.delete(friendid);
-            index();
-        };
+    };
+
+    $scope.delete = function (friendid) {
+        friendsFactory.delete(friendid);
+        index();
     };
 
     $scope.logout = function () {
